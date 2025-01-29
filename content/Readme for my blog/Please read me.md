@@ -1,11 +1,4 @@
 
-'''c
+is this really work or not 
 
-Thank you god
-
-Hi chae Jung woo
-
-This is me, real legend gay Kang
-
-'''
-
+I don't know please say to me it work or not
