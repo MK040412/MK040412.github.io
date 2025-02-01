@@ -41,14 +41,14 @@ graph TD
     C0_2["0.2 Basic Concepts of Linux"]
   end
 
-  subgraph "Chapter 1: Linux의 철학과 설계 원리"
+  subgraph "Chapter 1: Linux의 철학과 설계 원리\n"
     C1_1["1.1 Unix/Linux 철학"]
     C1_2["1.2 설계 원칙과 아키텍처"]
     C1_3["1.3 실습 환경 구축"]
     C1_4["1.4 기본 조작법 마스터"]
   end
 
-  subgraph "Chapter 2: 실전 생존 키트"
+  subgraph "Chapter 2: 실전 생존 키트\n"
     C2_1["2.1 터미널 마스터하기"]
     C2_2["2.2 파일 시스템 다루기"]
     C2_3["2.3 텍스트 처리의 기술"]
