@@ -18,8 +18,10 @@ footer: '**Kang - Minkyu** | [perelman@unist.ac.kr](mailto:perelman@unist.ac.kr
 
  **1. What is Linux**
 **2. Why we have to study Linux**
-**3. Concept of kernel and Shell**
-**4. How to use Linux**
+**3. 
+**4. Concept of kernel and Shell**
+**5. How to use Linux**
+**6. Linux commands**
   
 ---  
   
@@ -48,7 +50,9 @@ footer: '**Kang - Minkyu** | [perelman@unist.ac.kr](mailto:perelman@unist.ac.kr
   
 - **High flexibility and customizability**  
   
-- **Hardware portability and dependency**  
+- **Hardware portability and dependency**
+
+- There are many Linux-based environments.
   
 ---  
   
@@ -93,5 +97,9 @@ sequenceDiagram
 ---
 
 # **How to use Linux**  
+
+> When we need to use the Linux, and why we need to use Linux
+
+
 
 ---
