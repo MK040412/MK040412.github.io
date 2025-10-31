@@ -1,10 +1,11 @@
 export const profile = {
-	fullName: 'Your Name',
-	title: '',
+	fullName: 'Kang Minkyu',
+	title: 'Researcher',
 	institute: '',
-	author_name: '', // Author name to be highlighted in the papers section
+	author_name: 'Kang Minkyu', // Author name to be highlighted in the papers section
 	research_areas: [
-		// { title: 'Physics', description: 'Brief description of the research interest', field: 'physics' },
+		{ title: 'Vision-Language Agents (VLA)', description: 'I am interested in developing Vision-Language Agents that can perceive, reason, and act in complex environments based on multimodal inputs.' },
+		{ title: 'Scalable Reinforcement Learning (RL)', description: 'My primary research focus is on the scalability of Reinforcement Learning, exploring how to train agents efficiently for large-scale, real-world applications.' },
 	],
 }
 
@@ -33,7 +34,7 @@ export const template = {
 }
 
 export const seo = {
-	default_title: 'Astro Academia',
-	default_description: 'Astro Academia is a template for academic websites.',
+	default_title: 'Kang Minkyu',
+	default_description: 'Personal academic website of Kang Minkyu, focusing on Vision-Language Agents and Scalable Reinforcement Learning.',
 	default_image: '/images/astro-academia.png',
 }
