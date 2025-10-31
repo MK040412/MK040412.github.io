@@ -8,7 +8,12 @@ export default {
     daisyui: {
         themes: [
             "light",
-            "dark",
+            {
+                dark: {
+                    ...require("daisyui/src/theming/themes")["dark"],
+                    secondary: "blue",
+                },
+            },
             "cupcake",
             "bumblebee",
             "emerald",
