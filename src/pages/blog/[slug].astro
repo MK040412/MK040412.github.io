@@ -72,6 +72,7 @@ const { Content } = await render(post);
 			<div
 				class='prose mt-8 prose-h2:text-2xl prose-h2:font-bold prose-h2:mb-4
          prose-h3:text-xl prose-h3:font-semibold prose-h3:mb-3
+         prose-h4:text-lg prose-h4:font-medium prose-h4:mb-2
          prose-p:mb-4 prose-p:leading-relaxed
          prose-strong:text-base-content prose-strong:font-bold
          prose-em:italic
@@ -81,7 +82,13 @@ const { Content } = await render(post);
          prose-ul:list-disc prose-ul:pl-6
          prose-ol:list-decimal prose-ol:pl-6
          prose-li:mb-2
-         prose-img:rounded-lg prose-img:my-8'
+         prose-img:rounded-lg prose-img:my-8 prose-img:mx-auto
+         prose-table:mx-auto
+         text-center
+         [&>h1]:text-center [&>h2]:text-center [&>h3]:text-center [&>h4]:text-center
+         [&>p]:text-center [&>ul]:text-left [&>ol]:text-left
+         [&>table]:mx-auto [&>figure]:mx-auto
+         [&>blockquote]:text-left [&>blockquote]:mx-auto [&>blockquote]:max-w-2xl'
         >
                 <Content />
 			</div>

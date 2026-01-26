@@ -14,7 +14,8 @@ export async function getStaticPaths({ paginate }): Promise<Astro.getStaticPaths
             date: post.data.date,
             badge: post.data.tags[0],
             excerpt: trimExcerpt(post.data.excerpt),
-            slug: `${template.base}/blog/${post.id}`,
+            slug: post.data.externalLink || `${template.base}/blog/${post.id}`,
+            isExternal: !!post.data.externalLink,
         }))
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -35,7 +36,7 @@ const { page } = Astro.props
 						<div class='card-body'>
 							<div class='flex justify-between items-start'>
 								<h2 class='card-title text-xl'>
-                            <a href={post.slug} class='hover:text-accent'>
+                            <a href={post.slug} class='hover:text-accent' target={post.isExternal ? '_blank' : '_self'} rel={post.isExternal ? 'noopener noreferrer' : undefined}>
 										{post.title}
 									</a>
 								</h2>
@@ -55,8 +56,10 @@ const { page } = Astro.props
 								<a
                             href={post.slug}
 									class='btn btn-sm btn-secondary text-secondary-content'
+									target={post.isExternal ? '_blank' : '_self'}
+									rel={post.isExternal ? 'noopener noreferrer' : undefined}
 								>
-									Read More
+									{post.isExternal ? 'View Project' : 'Read More'}
 								</a>
 							</div>
 						</div>

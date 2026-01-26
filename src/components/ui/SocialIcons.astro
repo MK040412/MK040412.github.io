@@ -8,6 +8,7 @@ import X from '@/assets/social-icons/x-twitter.svg'
 import Inspire from '@/assets/social-icons/inspire.svg'
 import Arxiv from '@/assets/social-icons/arxiv.svg'
 import Orcid from '@/assets/social-icons/orcid.svg'
+import Discord from '@/assets/social-icons/discord.svg'
 
 import { social } from '@/settings'
 
@@ -78,6 +79,13 @@ const calculatedContainerSize = activeSocial.length <= 5 ? 'size-12' : activeSoc
 	  {social.orcid !== '' &&
 		<a href={social.orcid} target="_blank" class={`${calculatedContainerSize} inline-flex items-center justify-center rounded-xl hover:bg-primary/20 transition-all duration-300`}>
 			<Orcid class={calculatedIconSize} fill="currentColor" />
+		</a>
+	}
+
+	<!-- Discord -->
+	{social.discord !== '' &&
+		<a href={social.discord} target="_blank" class={`${calculatedContainerSize} inline-flex items-center justify-center rounded-xl hover:bg-primary/20 transition-all duration-300`}>
+			<Discord class={calculatedIconSize} fill="currentColor" />
 		</a>
 	}
 </div>
