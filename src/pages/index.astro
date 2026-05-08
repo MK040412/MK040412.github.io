@@ -3,7 +3,7 @@ import { Image } from 'astro:assets'
 
 import Layout from '../layouts/Layout.astro'
 import { profile, social } from '../settings'
-import { publications, type Publication } from '../data/cv'
+import { publications, blogPosts, type Publication, type BlogPost } from '../data/cv'
 import ProfilePicture from '../assets/profile_pictures.jpg'
 
 type LinkEntry = { label: string; href: string }
@@ -14,6 +14,12 @@ function renderAuthors(authors: string, ownName: string): string {
 	return parts
 		.map((p) => (matchTargets.some((t) => p === t) ? `<strong>${p}</strong>` : p))
 		.join(', ')
+}
+
+function formatDate(iso: string): string {
+	const d = new Date(iso)
+	if (Number.isNaN(d.getTime())) return iso
+	return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 const contactLinks: LinkEntry[] = []
@@ -42,23 +48,25 @@ function buildPubLinks(pub: Publication): LinkEntry[] {
 					<table class='header-table'>
 						<tbody>
 							<tr>
-								<td style='padding:2.5%;width:63%;vertical-align:middle'>
-									<p class='name' style='text-align:center;'>{profile.fullName}</p>
-									<p set:html={profile.bio_html} />
+								<td class='header-text-cell'>
+									<p class='name'>{profile.fullName}</p>
+									<p class='bio' set:html={profile.bio_html} />
 									<p class='contact-line'>
 										{contactLinks.map((link, i) => (
 											<>
-												{i > 0 && <span>{'  /  '}</span>}
+												{i > 0 && <span class='sep'>{' / '}</span>}
 												<a href={link.href}>{link.label}</a>
 											</>
 										))}
 									</p>
 								</td>
-								<td style='padding:2.5%;width:37%;max-width:37%'>
+								<td class='header-photo-cell'>
 									<Image
 										src={ProfilePicture}
 										alt={profile.fullName}
 										class='profile-photo'
+										widths={[320, 480, 640]}
+										sizes='(max-width: 600px) 60vw, 280px'
 									/>
 								</td>
 							</tr>
@@ -68,7 +76,7 @@ function buildPubLinks(pub: Publication): LinkEntry[] {
 					<table class='section-table' id='research'>
 						<tbody>
 							<tr>
-								<td style='padding:16px;width:100%;vertical-align:middle'>
+								<td class='section-cell'>
 									<h2>Research</h2>
 									<p set:html={profile.research_html} />
 								</td>
@@ -76,59 +84,125 @@ function buildPubLinks(pub: Publication): LinkEntry[] {
 						</tbody>
 					</table>
 
-					<table class='pubs-table'>
-						<tbody>
-							{publications.map((pub: Publication) => {
-								const bg = pub.highlight ? '#ffffd0' : undefined
-								const linksList = buildPubLinks(pub)
-								return (
-									<tr style={bg ? `background-color:${bg};` : undefined}>
-										<td style='padding:16px;width:20%;vertical-align:middle'>
-											{pub.image ? (
-												<img src={pub.image} alt={pub.title} class='thumb' />
-											) : (
-												<Image src={ProfilePicture} alt={pub.title} class='thumb' />
-											)}
-										</td>
-										<td style='padding:16px 8px;width:80%;vertical-align:middle'>
-											{pub.link ? (
-												<a href={pub.link}>
+					{publications.length > 0 && (
+						<table class='section-table'>
+							<tbody>
+								<tr>
+									<td class='section-cell'>
+										<h2>Publications</h2>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					)}
+
+					{publications.length > 0 && (
+						<table class='pubs-table'>
+							<tbody>
+								{publications.map((pub: Publication) => {
+									const bg = pub.highlight ? '#ffffd0' : undefined
+									const linksList = buildPubLinks(pub)
+									return (
+										<tr style={bg ? `background-color:${bg};` : undefined}>
+											<td class='thumb-cell'>
+												{pub.image ? (
+													<img src={pub.image} alt={pub.title} class='thumb' />
+												) : (
+													<Image src={ProfilePicture} alt={pub.title} class='thumb' />
+												)}
+											</td>
+											<td class='entry-cell'>
+												{pub.link ? (
+													<a href={pub.link}>
+														<span class='papertitle'>{pub.title}</span>
+													</a>
+												) : (
 													<span class='papertitle'>{pub.title}</span>
-												</a>
-											) : (
-												<span class='papertitle'>{pub.title}</span>
-											)}
-											<br />
-											<span set:html={renderAuthors(pub.authors, profile.author_name)} />
-											<br />
-											<em>{pub.venue}</em>, {pub.year}
-											{linksList.length > 0 && (
-												<>
-													<br />
-													{linksList.map((l, i) => (
-														<>
-															{i > 0 && <span>{' / '}</span>}
-															<a href={l.href}>{l.label}</a>
-														</>
-													))}
-												</>
-											)}
-											{pub.tldr && (
-												<>
-													<p></p>
-													<p>{pub.tldr}</p>
-												</>
-											)}
-										</td>
-									</tr>
-								)
-							})}
+												)}
+												<br />
+												<span set:html={renderAuthors(pub.authors, profile.author_name)} />
+												<br />
+												<em>{pub.venue}</em>, {pub.year}
+												{linksList.length > 0 && (
+													<>
+														<br />
+														{linksList.map((l, i) => (
+															<>
+																{i > 0 && <span class='sep'>{' / '}</span>}
+																<a href={l.href}>{l.label}</a>
+															</>
+														))}
+													</>
+												)}
+												{pub.tldr && (
+													<>
+														<p></p>
+														<p>{pub.tldr}</p>
+													</>
+												)}
+											</td>
+										</tr>
+									)
+								})}
+							</tbody>
+						</table>
+					)}
+
+					<table class='section-table'>
+						<tbody>
+							<tr>
+								<td class='section-cell'>
+									<h2>Blog Posts</h2>
+									{blogPosts.length === 0 ? (
+										<p class='muted'>Coming soon.</p>
+									) : null}
+								</td>
+							</tr>
 						</tbody>
 					</table>
 
+					{blogPosts.length > 0 && (
+						<table class='pubs-table'>
+							<tbody>
+								{blogPosts.map((post: BlogPost) => {
+									const bg = post.highlight ? '#ffffd0' : undefined
+									return (
+										<tr style={bg ? `background-color:${bg};` : undefined}>
+											<td class='thumb-cell'>
+												{post.image ? (
+													<img src={post.image} alt={post.title} class='thumb' />
+												) : (
+													<Image src={ProfilePicture} alt={post.title} class='thumb' />
+												)}
+											</td>
+											<td class='entry-cell'>
+												<a href={post.link} target='_blank' rel='noopener'>
+													<span class='papertitle'>{post.title}</span>
+												</a>
+												<br />
+												<span class='post-meta'>{formatDate(post.date)}</span>
+												{post.tags && post.tags.length > 0 && (
+													<span class='post-tags'>
+														{post.tags.map((t, i) => (
+															<>
+																{i === 0 ? ' · ' : ' · '}
+																<span class='tag'>{t}</span>
+															</>
+														))}
+													</span>
+												)}
+												<p class='excerpt'>{post.excerpt}</p>
+											</td>
+										</tr>
+									)
+								})}
+							</tbody>
+						</table>
+					)}
+
 					<p class='footer-credit'>
 						Design inspired by{' '}
-						<a href='https://jonbarron.github.io'>Jon Barron's website</a>.
+						<a href='https://jonbarron.info/'>Jon Barron's website</a>.
 					</p>
 				</td>
 			</tr>

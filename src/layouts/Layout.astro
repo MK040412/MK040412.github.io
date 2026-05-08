@@ -36,7 +36,7 @@ const {
 	body, td, th, tr, p, a {
 		font-family: 'Lato', Verdana, Helvetica, sans-serif;
 		font-size: 14px;
-		line-height: 1.5;
+		line-height: 1.45;
 	}
 
 	strong {
@@ -55,7 +55,9 @@ const {
 	}
 
 	h2 {
-		margin: 0;
+		margin: 0 0 8px 0;
+		padding-bottom: 0;
+		border-bottom: 0;
 		font-weight: normal;
 		font-family: 'Lato', Verdana, Helvetica, sans-serif;
 		font-size: 22px;
@@ -68,38 +70,32 @@ const {
 	}
 
 	.name {
-		padding-top: 20px;
-		margin: 0;
+		padding-top: 0;
+		margin: 0 0 10px 0;
 		font-family: 'Lato', Verdana, Helvetica, sans-serif;
 		font-size: 32px;
+		font-weight: 700;
+		letter-spacing: 0;
+		text-align: center;
+	}
+
+	.bio {
+		margin: 0 0 14px 0;
+		text-align: left;
 	}
 
 	span.highlight {
 		background-color: #ffffd0;
 	}
 
-	.profile-photo {
-		width: 100%;
-		max-width: 100%;
-		object-fit: cover;
-		border-radius: 50%;
-		display: block;
-	}
-
-	.thumb {
-		width: 160px;
-		height: 160px;
-		object-fit: cover;
-		display: block;
-	}
-
 	.outer {
 		width: 100%;
-		max-width: 800px;
+		max-width: 880px;
 		margin: 0 auto;
 		border: 0;
 		border-spacing: 0;
 		border-collapse: separate;
+		padding: 0 16px;
 	}
 
 	.outer td {
@@ -111,6 +107,31 @@ const {
 		border: 0;
 		border-spacing: 0;
 		border-collapse: separate;
+		margin-top: 24px;
+	}
+
+	.header-text-cell {
+		padding: 0 24px 0 8px;
+		width: 64%;
+		vertical-align: middle;
+	}
+
+	.header-photo-cell {
+		padding: 0 8px;
+		width: 36%;
+		max-width: 36%;
+		vertical-align: middle;
+		text-align: right;
+	}
+
+	.profile-photo {
+		width: 100%;
+		max-width: 280px;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		border-radius: 4px;
+		display: inline-block;
+		box-shadow: none;
 	}
 
 	.section-table {
@@ -118,29 +139,107 @@ const {
 		border: 0;
 		border-spacing: 0;
 		border-collapse: separate;
+		margin-top: 28px;
+	}
+
+	.section-cell {
+		padding: 8px 8px 0 8px;
+		width: 100%;
+		vertical-align: middle;
 	}
 
 	.pubs-table {
 		width: 100%;
 		border: 0;
-		border-spacing: 0 10px;
+		border-spacing: 0 12px;
 		border-collapse: separate;
+	}
+
+	.thumb-cell {
+		padding: 12px 8px;
+		width: 180px;
+		vertical-align: middle;
+	}
+
+	.entry-cell {
+		padding: 12px 8px 12px 4px;
+		vertical-align: middle;
+	}
+
+	.thumb {
+		width: 160px;
+		height: 160px;
+		object-fit: cover;
+		display: block;
+		border-radius: 4px;
 	}
 
 	.contact-line {
 		text-align: center;
+		margin: 0;
+	}
+
+	.contact-line .sep {
+		color: #999;
+		margin: 0 4px;
+	}
+
+	.muted {
+		color: #777;
+		font-style: italic;
+		margin: 8px 0 0 0;
+	}
+
+	.post-meta {
+		color: #555;
+		font-size: 13px;
+	}
+
+	.post-tags {
+		color: #777;
+		font-size: 13px;
+	}
+
+	.post-tags .tag {
+		color: #777;
+	}
+
+	.excerpt {
+		margin: 8px 0 6px 0;
+		color: #333;
 	}
 
 	.footer-credit {
 		text-align: right;
 		font-size: 12px;
-		color: #555;
-		padding: 24px 8px;
+		color: #777;
+		padding: 32px 8px 24px 8px;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 700px) {
+		.header-table tbody tr {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+		.header-text-cell, .header-photo-cell {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			padding: 8px;
+			text-align: center;
+		}
+		.profile-photo {
+			max-width: 220px;
+		}
 		.name {
-			font-size: 26px;
+			font-size: 28px;
+			padding-top: 8px;
+		}
+		.contact-line {
+			text-align: center;
+		}
+		.thumb-cell {
+			width: 120px;
 		}
 		.thumb {
 			width: 110px;

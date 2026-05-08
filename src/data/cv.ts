@@ -11,15 +11,27 @@ export type Publication = {
 	highlight?: boolean;
 };
 
-export const publications: Publication[] = [
+export type BlogPost = {
+	title: string;
+	date: string;
+	excerpt: string;
+	link: string;
+	image?: string;
+	tags?: string[];
+	highlight?: boolean;
+};
+
+export const publications: Publication[] = [];
+
+export const blogPosts: BlogPost[] = [
 	{
 		title: 'Ouroboros: Reinforcement-Guided Flow Matching',
-		authors: 'Kang Minkyu, Chae Jeongwoo, Kim Jinho',
-		venue: 'arXiv',
-		year: 2025,
+		date: '2025-01-26',
+		excerpt:
+			'A reinforcement-guided flow matching framework that unifies critic optimization and generative diffusion in latent space for improved text-to-image alignment.',
 		link: 'https://mk040412.github.io/Ouroboros-Reinforcement-Guided-Flow-Matching/',
 		image: '/images/ouroboros/Ouroboros.webp',
-		tldr: 'A reinforcement-guided flow matching framework that unifies critic optimization and generative diffusion in latent space for improved text-to-image alignment.',
+		tags: ['Deep Learning', 'Diffusion', 'Reinforcement Learning'],
 		highlight: true,
 	},
 ];
