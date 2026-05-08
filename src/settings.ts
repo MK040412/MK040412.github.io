@@ -1,41 +1,27 @@
 export const profile = {
 	fullName: 'Kang Minkyu',
-	title: '',
-	institute: '',
-	author_name: 'Kang Minkyu', // Author name to be highlighted in the papers section
-	research_areas: [
-		{ title: 'Vision-Language-Action (VLA)', description: 'I am interested in developing agents that can understand and interact with the world through vision and language, focusing on how they take action based on this understanding.' },
-		{ title: 'Scalable Reinforcement Learning (RL)', description: 'My primary research focus is on the scalability of Reinforcement Learning, exploring how to train agents efficiently for large-scale, real-world applications.' },
-	],
-}
+	author_name: 'Kang Minkyu',
+	bio_html: `I'm a researcher interested in <a href="#research">Vision-Language-Action (VLA)</a> agents and <a href="#research">scalable Reinforcement Learning</a>. My work explores how agents can perceive, reason, and act in the world through vision and language, with a focus on training methods that scale to large, real-world settings.`,
+	research_html: `I'm interested in vision-language-action models, reinforcement learning, and generative modeling. Most of my research is about training agents that can understand and interact with the world at scale. Some papers are <span class="highlight">highlighted</span>.`,
+};
 
-// Set equal to an empty string to hide the icon that you don't want to display
 export const social = {
 	email: '',
-	linkedin: 'https://www.linkedin.com/in/minkyu-kang-508007273',
-	x: 'https://twitter.com/mingumingu_kang',
-	github: '',
-	gitlab: '',
+	cv: '',
 	scholar: '',
-	inspire: '',
-	arxiv: '',
-	orcid: '',
+	x: 'https://twitter.com/mingumingu_kang',
+	linkedin: 'https://www.linkedin.com/in/minkyu-kang-508007273',
+	github: '',
 	discord: 'https://discord.gg/uCvvYTEh',
-}
+};
 
 export const template = {
-	website_url: 'https://mk040412.github.io', // Astro needs to know your site’s deployed URL to generate a sitemap. It must start with http:// or https://
-	menu_left: false,
-	transitions: true,
-	lightTheme: 'night', // Select one of the Daisy UI Themes or create your own
-	darkTheme: 'night', // Select one of the Daisy UI Themes or create your own
-	excerptLength: 200,
-	postPerPage: 5,
-    base: '' // Repository name starting with /
-}
+	website_url: 'https://mk040412.github.io',
+	base: '',
+};
 
 export const seo = {
 	default_title: 'Kang Minkyu',
-	default_description: 'Personal academic website of Kang Minkyu, focusing on Vision-Language Agents and Scalable Reinforcement Learning.',
-	default_image: '/images/astro-academia.png',
-}
+	default_description: 'Personal academic website of Kang Minkyu, focusing on Vision-Language-Action and Scalable Reinforcement Learning.',
+	default_image: '/favicon.svg',
+};

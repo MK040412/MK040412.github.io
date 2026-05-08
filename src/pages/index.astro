@@ -1,37 +1,137 @@
 ---
+import { Image } from 'astro:assets'
+
 import Layout from '../layouts/Layout.astro'
+import { profile, social } from '../settings'
+import { publications, type Publication } from '../data/cv'
+import ProfilePicture from '../assets/profile_pictures.jpg'
 
-import { profile } from '@/settings'
-import { publications } from '@/data/cv'
-import ProfilePictures from '@/assets/profile_pictures.jpg'
-import Hero from '@/components/ui/Hero.astro'
-import Grid from '@/components/ui/Grid.astro'
-import ArticleList from '@/components/ui/ArticleList.astro'
+type LinkEntry = { label: string; href: string }
 
-const { fullName, title, institute, research_areas } = profile
+function renderAuthors(authors: string, ownName: string): string {
+	const parts = authors.split(',').map((s) => s.trim())
+	const matchTargets = [ownName, ownName.split(' ').reverse().join(' ')]
+	return parts
+		.map((p) => (matchTargets.some((t) => p === t) ? `<strong>${p}</strong>` : p))
+		.join(', ')
+}
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const contactLinks: LinkEntry[] = []
+if (social.email) contactLinks.push({ label: 'Email', href: `mailto:${social.email}` })
+if (social.cv) contactLinks.push({ label: 'CV', href: social.cv })
+if (social.scholar) contactLinks.push({ label: 'Scholar', href: social.scholar })
+if (social.x) contactLinks.push({ label: 'Twitter', href: social.x })
+if (social.linkedin) contactLinks.push({ label: 'LinkedIn', href: social.linkedin })
+if (social.github) contactLinks.push({ label: 'Github', href: social.github })
+if (social.discord) contactLinks.push({ label: 'Discord', href: social.discord })
+
+function buildPubLinks(pub: Publication): LinkEntry[] {
+	const out: LinkEntry[] = []
+	if (pub.link) out.push({ label: 'project page', href: pub.link })
+	if (pub.arxiv) out.push({ label: 'arXiv', href: pub.arxiv })
+	if (pub.code) out.push({ label: 'code', href: pub.code })
+	return out
+}
 ---
 
 <Layout>
-	<!-- Hero Section -->
-	<section class='flex items-center gap-12 border-b pb-12'>
-		<Hero
-			fullName={fullName}
-			title={title}
-			institute={institute}
-			profilePicture={ProfilePictures}
-		/>
-	</section>
+	<table class='outer'>
+		<tbody>
+			<tr>
+				<td>
+					<table class='header-table'>
+						<tbody>
+							<tr>
+								<td style='padding:2.5%;width:63%;vertical-align:middle'>
+									<p class='name' style='text-align:center;'>{profile.fullName}</p>
+									<p set:html={profile.bio_html} />
+									<p class='contact-line'>
+										{contactLinks.map((link, i) => (
+											<>
+												{i > 0 && <span>{'  /  '}</span>}
+												<a href={link.href}>{link.label}</a>
+											</>
+										))}
+									</p>
+								</td>
+								<td style='padding:2.5%;width:37%;max-width:37%'>
+									<Image
+										src={ProfilePicture}
+										alt={profile.fullName}
+										class='profile-photo'
+									/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 
-	<!-- Research Areas -->
-	<section class='py-12 border-b'>
-		<Grid gridTitle='Research Areas' gridItems={research_areas} />
-	</section>
+					<table class='section-table' id='research'>
+						<tbody>
+							<tr>
+								<td style='padding:16px;width:100%;vertical-align:middle'>
+									<h2>Research</h2>
+									<p set:html={profile.research_html} />
+								</td>
+							</tr>
+						</tbody>
+					</table>
 
-	<!-- Recent Publications -->
-	<section class='py-12 border-t'>
-		<ArticleList listTitle='Recent Publications' listItems={publications} />
-	</section>
+					<table class='pubs-table'>
+						<tbody>
+							{publications.map((pub: Publication) => {
+								const bg = pub.highlight ? '#ffffd0' : undefined
+								const linksList = buildPubLinks(pub)
+								return (
+									<tr style={bg ? `background-color:${bg};` : undefined}>
+										<td style='padding:16px;width:20%;vertical-align:middle'>
+											{pub.image ? (
+												<img src={pub.image} alt={pub.title} class='thumb' />
+											) : (
+												<Image src={ProfilePicture} alt={pub.title} class='thumb' />
+											)}
+										</td>
+										<td style='padding:16px 8px;width:80%;vertical-align:middle'>
+											{pub.link ? (
+												<a href={pub.link}>
+													<span class='papertitle'>{pub.title}</span>
+												</a>
+											) : (
+												<span class='papertitle'>{pub.title}</span>
+											)}
+											<br />
+											<span set:html={renderAuthors(pub.authors, profile.author_name)} />
+											<br />
+											<em>{pub.venue}</em>, {pub.year}
+											{linksList.length > 0 && (
+												<>
+													<br />
+													{linksList.map((l, i) => (
+														<>
+															{i > 0 && <span>{' / '}</span>}
+															<a href={l.href}>{l.label}</a>
+														</>
+													))}
+												</>
+											)}
+											{pub.tldr && (
+												<>
+													<p></p>
+													<p>{pub.tldr}</p>
+												</>
+											)}
+										</td>
+									</tr>
+								)
+							})}
+						</tbody>
+					</table>
+
+					<p class='footer-credit'>
+						Design inspired by{' '}
+						<a href='https://jonbarron.github.io'>Jon Barron's website</a>.
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </Layout>

@@ -1,55 +1,25 @@
-export const experiences = [
-	{
-		company: '',
-		time: '',
-		title: '',
-		location: '',
-		description: '',
-	},
-	// {
-	// 	company: 'Radium Institute (Institut du Radium)',
-	// 	time: '1914 - 1934',
-	// 	title: 'Director',
-	// 	location: 'Paris, France',
-	// 	description: 'Led groundbreaking studies on radioactivity and mentored future Nobel Prize laureates.',
-	// },
-];
+export type Publication = {
+	title: string;
+	authors: string;
+	venue: string;
+	year: string | number;
+	link?: string;
+	arxiv?: string;
+	code?: string;
+	tldr?: string;
+	image?: string;
+	highlight?: boolean;
+};
 
-export const education = [
+export const publications: Publication[] = [
 	{
-		school: '',
-		time: '',
-		degree: '',
-		location: '',
-		description: '',
+		title: 'Ouroboros: Reinforcement-Guided Flow Matching',
+		authors: 'Kang Minkyu, Chae Jeongwoo, Kim Jinho',
+		venue: 'arXiv',
+		year: 2025,
+		link: 'https://mk040412.github.io/Ouroboros-Reinforcement-Guided-Flow-Matching/',
+		image: '/images/ouroboros/Ouroboros.webp',
+		tldr: 'A reinforcement-guided flow matching framework that unifies critic optimization and generative diffusion in latent space for improved text-to-image alignment.',
+		highlight: true,
 	},
-	// {
-	// 	school: 'University of Paris',
-	// 	time: '1891 - 1895',
-	// 	degree: 'Master’s in Physics and Mathematics',
-	// 	location: 'Paris, France',
-	// 	description: 'Graduated at the top of her class in physics and second in mathematics.',
-	// },
-];
-
-export const skills = [
-	{
-		title: '',
-		description: '',
-	},
-	// {
-	// 	title: 'Experimental Techniques',
-	// 	description: 'Spectroscopy, Isolation of Radioactive Elements, Radiation Measurement',
-	// },
-];
-
-export const publications = [
-	// {
-	// 	title: 'The Radiation of Uranium Compounds',
-	// 	authors: 'Marie Curie',
-	// 	journal: 'Comptes Rendus de l’Académie des Sciences',
-	// 	time: '1898',
-	// 	link: '#',
-	// 	abstract: 'Early research leading to the identification of uranium’s radioactive properties.',
-	// },
 ];
