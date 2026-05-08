@@ -29,7 +29,6 @@ if (social.scholar) contactLinks.push({ label: 'Scholar', href: social.scholar }
 if (social.x) contactLinks.push({ label: 'Twitter', href: social.x })
 if (social.linkedin) contactLinks.push({ label: 'LinkedIn', href: social.linkedin })
 if (social.github) contactLinks.push({ label: 'Github', href: social.github })
-if (social.discord) contactLinks.push({ label: 'Discord', href: social.discord })
 
 function buildPubLinks(pub: Publication): LinkEntry[] {
 	const out: LinkEntry[] = []
@@ -72,81 +71,6 @@ function buildPubLinks(pub: Publication): LinkEntry[] {
 							</tr>
 						</tbody>
 					</table>
-
-					<table class='section-table' id='research'>
-						<tbody>
-							<tr>
-								<td class='section-cell'>
-									<h2>Research</h2>
-									<p set:html={profile.research_html} />
-								</td>
-							</tr>
-						</tbody>
-					</table>
-
-					{publications.length > 0 && (
-						<table class='section-table'>
-							<tbody>
-								<tr>
-									<td class='section-cell'>
-										<h2>Publications</h2>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					)}
-
-					{publications.length > 0 && (
-						<table class='pubs-table'>
-							<tbody>
-								{publications.map((pub: Publication) => {
-									const bg = pub.highlight ? '#ffffd0' : undefined
-									const linksList = buildPubLinks(pub)
-									return (
-										<tr style={bg ? `background-color:${bg};` : undefined}>
-											<td class='thumb-cell'>
-												{pub.image ? (
-													<img src={pub.image} alt={pub.title} class='thumb' />
-												) : (
-													<Image src={ProfilePicture} alt={pub.title} class='thumb' />
-												)}
-											</td>
-											<td class='entry-cell'>
-												{pub.link ? (
-													<a href={pub.link}>
-														<span class='papertitle'>{pub.title}</span>
-													</a>
-												) : (
-													<span class='papertitle'>{pub.title}</span>
-												)}
-												<br />
-												<span set:html={renderAuthors(pub.authors, profile.author_name)} />
-												<br />
-												<em>{pub.venue}</em>, {pub.year}
-												{linksList.length > 0 && (
-													<>
-														<br />
-														{linksList.map((l, i) => (
-															<>
-																{i > 0 && <span class='sep'>{' / '}</span>}
-																<a href={l.href}>{l.label}</a>
-															</>
-														))}
-													</>
-												)}
-												{pub.tldr && (
-													<>
-														<p></p>
-														<p>{pub.tldr}</p>
-													</>
-												)}
-											</td>
-										</tr>
-									)
-								})}
-							</tbody>
-						</table>
-					)}
 
 					<table class='section-table'>
 						<tbody>
@@ -192,6 +116,69 @@ function buildPubLinks(pub: Publication): LinkEntry[] {
 													</span>
 												)}
 												<p class='excerpt'>{post.excerpt}</p>
+											</td>
+										</tr>
+									)
+								})}
+							</tbody>
+						</table>
+					)}
+
+					<table class='section-table' id='publications'>
+						<tbody>
+							<tr>
+								<td class='section-cell'>
+									<h2>Publications</h2>
+									<p set:html={profile.research_html} />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					{publications.length > 0 && (
+						<table class='pubs-table'>
+							<tbody>
+								{publications.map((pub: Publication) => {
+									const bg = pub.highlight ? '#ffffd0' : undefined
+									const linksList = buildPubLinks(pub)
+									return (
+										<tr style={bg ? `background-color:${bg};` : undefined}>
+											<td class='thumb-cell'>
+												{pub.image ? (
+													<img src={pub.image} alt={pub.title} class='thumb' />
+												) : (
+													<Image src={ProfilePicture} alt={pub.title} class='thumb' />
+												)}
+											</td>
+											<td class='entry-cell'>
+												{pub.link ? (
+													<a href={pub.link}>
+														<span class='papertitle'>{pub.title}</span>
+													</a>
+												) : (
+													<span class='papertitle'>{pub.title}</span>
+												)}
+												<br />
+												<span set:html={renderAuthors(pub.authors, profile.author_name)} />
+												<br />
+												<em>{pub.venue}</em>, {pub.year}
+												{linksList.length > 0 && (
+													<>
+														<br />
+														{linksList.map((l, i) => (
+															<>
+																{i > 0 && <span class='sep'>{' / '}</span>}
+																<a href={l.href}>{l.label}</a>
+															</>
+														))}
+													</>
+												)}
+												{pub.tldr && (
+													<>
+														<p></p>
+														<p>{pub.tldr}</p>
+													</>
+												)}
 											</td>
 										</tr>
 									)

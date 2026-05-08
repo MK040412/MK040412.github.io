@@ -1,8 +1,8 @@
 export const profile = {
 	fullName: 'Kang Minkyu',
 	author_name: 'Kang Minkyu',
-	bio_html: `I'm a researcher interested in <a href="#research">Vision-Language-Action (VLA)</a> agents and <a href="#research">scalable Reinforcement Learning</a>. My work explores how agents can perceive, reason, and act in the world through vision and language, with a focus on training methods that scale to large, real-world settings.`,
-	research_html: `I'm interested in vision-language-action models, reinforcement learning, and generative modeling. Most of my research is about training agents that can understand and interact with the world at scale. Some papers are <span class="highlight">highlighted</span>.`,
+	bio_html: `I'm a researcher interested in <a href="#publications">Vision-Language-Action (VLA)</a> agents and <a href="#publications">scalable Reinforcement Learning</a>. My work explores how agents can perceive, reason, and act in the world through vision and language, with a focus on training methods that scale to large, real-world settings.`,
+	research_html: `I work on vision-language-action models, reinforcement learning, and generative modeling — training agents that can understand and interact with the world at scale.`,
 };
 
 export const social = {
@@ -12,7 +12,6 @@ export const social = {
 	x: 'https://twitter.com/mingumingu_kang',
 	linkedin: 'https://www.linkedin.com/in/minkyu-kang-508007273',
 	github: '',
-	discord: 'https://discord.gg/uCvvYTEh',
 };
 
 export const template = {
