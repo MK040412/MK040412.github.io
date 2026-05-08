@@ -11,7 +11,7 @@ export const social = {
 	scholar: '',
 	x: 'https://twitter.com/mingumingu_kang',
 	linkedin: 'https://www.linkedin.com/in/minkyu-kang-508007273',
-	github: '',
+	github: 'https://github.com/MK040412',
 };
 
 export const template = {
