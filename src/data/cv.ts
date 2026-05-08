@@ -28,7 +28,7 @@ export const blogPosts: BlogPost[] = [
 		title: 'Project Weasel',
 		date: '2026-05-09',
 		excerpt:
-			'A research initiative on making Vision-Language-Action (VLA) models genuinely useful in the real world. The flagship W series tackles the core problems VLAs face today and aims toward agents with real autonomy; sub-projects explore important VLA-adjacent topics. Sub-projects so far: W0 (an open VLA for long-horizon tasks) and MineMate (emergent behaviour in human-in-the-loop multi-agent systems).',
+			'A research initiative on making Vision-Language-Action (VLA) models genuinely useful in the real world. The flagship W series tackles the core problems VLAs face today and aims toward agents with real autonomy; sub-projects explore important VLA-adjacent topics. Sub-projects so far: W0 (an open VLA for long-horizon tasks) and MineMate (multi-agent emergence with humans).',
 		link: 'https://mk040412.github.io/Project-Weasel/',
 		image: '/weasel-logo.png',
 		tags: ['VLA', 'Agents', 'Reinforcement Learning'],
