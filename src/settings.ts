@@ -1,7 +1,7 @@
 export const profile = {
 	fullName: 'Kang Minkyu',
 	author_name: 'Kang Minkyu',
-	bio_html: `I'm a researcher interested in <a href="#publications">Vision-Language-Action (VLA)</a> agents and <a href="#publications">scalable Reinforcement Learning</a>. My work explores how agents can perceive, reason, and act in the world through vision and language, with a focus on training methods that scale to large, real-world settings.`,
+	bio_html: `I'm a researcher interested in <a href="#publications">Vision-Language-Action (VLA)</a> agents, <a href="#publications">scalable Reinforcement Learning</a>, and <a href="#publications">diffusion models</a>. My work explores how agents can perceive, reason, and act in the world through vision and language, with a focus on training methods that scale to large, real-world settings.`,
 	research_html: `I work on vision-language-action models, reinforcement learning, and generative modeling — training agents that can understand and interact with the world at scale.`,
 };
 

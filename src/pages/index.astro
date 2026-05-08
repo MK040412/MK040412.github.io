@@ -79,7 +79,11 @@ function buildPubLinks(pub: Publication): LinkEntry[] {
 									<h2>Blog Posts</h2>
 									{blogPosts.length === 0 ? (
 										<p class='muted'>Coming soon.</p>
-									) : null}
+									) : (
+										<p class='muted'>
+											Recommended reads are <span class='highlight'>highlighted</span>.
+										</p>
+									)}
 								</td>
 							</tr>
 						</tbody>
@@ -129,7 +133,6 @@ function buildPubLinks(pub: Publication): LinkEntry[] {
 							<tr>
 								<td class='section-cell'>
 									<h2>Publications</h2>
-									<p set:html={profile.research_html} />
 								</td>
 							</tr>
 						</tbody>
