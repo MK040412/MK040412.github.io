@@ -1,7 +1,7 @@
 export const profile = {
 	fullName: 'Kang Minkyu',
 	author_name: 'Kang Minkyu',
-	bio_html: `I'm a researcher interested in <a href="#publications">Vision-Language-Action (VLA)</a>, <a href="#publications">Scalable Reinforcement Learning</a>, and <a href="#publications">Diffusion Models</a>. My main research question is <span class="highlight">how RL can be made scalable</span> — what training methods, architectures, and supervision signals make reinforcement learning work at large, real-world scales. Recommended reads on this website are <span class="highlight">highlighted</span>.`,
+	bio_html: `I'm a 4th-year undergraduate at <a href="https://www.unist.ac.kr/">UNIST</a> interested in <a href="#publications">Vision-Language-Action (VLA)</a>, <a href="#publications">Scalable Reinforcement Learning</a>, and <a href="#publications">Diffusion Models</a>. My main research question is <span class="highlight">how RL can be made scalable</span> — what training methods, architectures, and supervision signals make reinforcement learning work at large, real-world scales. Recommended reads on this website are <span class="highlight">highlighted</span>.`,
 	research_html: `I work on vision-language-action models, reinforcement learning, and generative modeling — training agents that can understand and interact with the world at scale.`,
 };
 
