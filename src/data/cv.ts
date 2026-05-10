@@ -25,16 +25,6 @@ export const publications: Publication[] = [];
 
 export const blogPosts: BlogPost[] = [
 	{
-		title: 'Mean Collapse is a Serious Bottleneck of VLA',
-		date: '2026-05-11',
-		excerpt:
-			'A toy study (team Weasel): VLAs that act on the latest observation only collapse on POMDP tasks (Ant-Maze 0.53 → 0.16). A small memory-based steering module — linear SSM + Perceiver, injected into a frozen Qwen3-VL VLA — recovers 0.84, past the MDP top-view baseline. Same pathology shows up on a Duolingo GUI agent.',
-		link: 'https://mk040412.github.io/Mean-Collapse-VLA/',
-		image: '/weasel-logo.png',
-		tags: ['VLA', 'POMDP', 'Memory', 'Steering'],
-		highlight: true,
-	},
-	{
 		title: 'Project Weasel',
 		date: '2026-05-09',
 		excerpt:
